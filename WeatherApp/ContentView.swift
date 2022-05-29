@@ -34,7 +34,9 @@ struct ContentView: View {
                         .labelStyle(.iconOnly)
                     
                 }
-        }//.padding(.top)
+        }.preferredColorScheme(.dark) // MARK: System wide Dark mode
+            .accentColor(.yellow)
+        //.padding(.top)
         //
         
         

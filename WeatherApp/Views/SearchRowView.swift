@@ -19,12 +19,15 @@ struct SearchRowView: View {
         HStack {
             Image(systemName: iconName)
                 .foregroundColor(colour)
+                .font(.system(size: 25))
+            Spacer()
+                .frame(width:10)
             Text(title)
-                .font(.system(size: 16, weight: .regular, design: .rounded))
+                .font(.system(size: 25, weight: .regular, design: .rounded))
             Spacer()
             Text(String(value.roundDouble()))
-                .font(.system(size: 20, weight: .bold, design: .rounded)) + Text(unitSymbol)
-                .font(.system(size: 16, weight: .light, design: .rounded))
+                .font(.system(size: 25, weight: .bold, design: .rounded)) + Text(unitSymbol)
+//                .font(.system(size: 16, weight: .light, design: .rounded))
         }.padding()
     }
 }

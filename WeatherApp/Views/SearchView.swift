@@ -35,7 +35,8 @@ struct SearchView: View {
                 } label: {
                     Image(systemName: "magnifyingglass")
                         .padding()
-                        .font(.title2)
+                        .font(.largeTitle)
+                        
                 }
                 
 
@@ -61,7 +62,7 @@ struct SearchView: View {
                 
                 SearchRowView(iconName: "speedometer", title: "Pressure", colour: .green, value: weatherForCity.main.pressure, unitSymbol: " hPA")
                 
-                SearchRowView(iconName: "cloud", title: "Cloud Percentage", colour: .yellow, value: Double(weatherForCity.clouds.all), unitSymbol: " %")
+                SearchRowView(iconName: "cloud", title: "Cloud Percentage", colour: .gray, value: Double(weatherForCity.clouds.all), unitSymbol: " %")
                 
                 SearchRowView(iconName: "wind", title: "Wind Speed", colour: .yellow, value: weatherForCity.wind.speed, unitSymbol: unit ? " mph" : " m/s")
                 

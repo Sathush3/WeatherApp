@@ -25,7 +25,7 @@ struct CurrentWeatherView: View {
                                 .font(.title)
                             
                             Text("Today,\(Date().formatted(.dateTime.month().day().hour().minute()))")
-                                .fontWeight(.light)
+                                .fontWeight(.medium)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -102,8 +102,8 @@ struct CurrentWeatherView: View {
                     }
                 }
                // .edgesIgnoringSafeArea(.bottom)
-                .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
-                        .preferredColorScheme(.dark) // MARK: System wide Dark mode
+                .background(Color(hue: 0.754, saturation: 0.462, brightness: 0.806))
+                .preferredColorScheme(.dark) // MARK: System wide Dark mode
                 
             }else{
                 // when the api request takes time a loading icon is displayed
