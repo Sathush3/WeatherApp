@@ -11,7 +11,7 @@ struct WeatherRowView: View {
     var logo: String
         var name: String
         var value: String
-    var body: some View {
+    var body: some View { // row view current weather screen bottom bar
         HStack(spacing: 20) {
                     Image(systemName: logo)
                         .font(.title2)

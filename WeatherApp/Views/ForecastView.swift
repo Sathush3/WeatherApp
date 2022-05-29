@@ -14,7 +14,7 @@ struct ForecastView: View {
     @State var weather:DailyForecast?
     var body: some View {
         NavigationView {
-            VStack{
+            VStack{ // picker for metric and imperial units
                 Picker("", selection: $unit) {
                 Text("° C")
                     .tag(WeatherUnit.metric)
@@ -29,11 +29,13 @@ struct ForecastView: View {
                         .font(.headline)
                     Spacer()
                 }.padding(.leading)
+                // list to display the day forecast and seperated by date section
                 if let weatherForecast = weather{
                     List(0..<6){ index in
                         let item = weatherForecast.daily[index]
                         Section(item.dt.unixToDate()!) {
                             HStack(spacing: 20) {
+                                // main icon
                                 Image(systemName: item.weather.first!.conditionIcon)
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -41,8 +43,10 @@ struct ForecastView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.cyan, .orange)
                                     .padding(.trailing,5)
+                                //information display
                                 VStack (alignment: .leading) {
                                     Text(item.weather.first!.description)
+                                    // temperature
                                     HStack()  {
                                         Text("High:")
                                         Text("\(item.temp.max.roundDouble())"+"\(unit == .metric ? "° C" : "° F")")
@@ -51,7 +55,7 @@ struct ForecastView: View {
                                         Text("Low:")
                                         Text("\(item.temp.min.roundDouble())"+"\(unit == .metric ? "° C" : "° F")")
                                     }
-                                    
+                                    // for cloud and wind speed
                                     HStack(spacing:20) {
                                         Image(systemName: "cloud")
                                             .foregroundColor(.gray)
@@ -60,7 +64,7 @@ struct ForecastView: View {
                                             .foregroundColor(.green)
                                         Text("\(item.wind_speed.roundDouble())"+"\(unit == .metric ? " m/s": " mph") ")
                                        
-                                    }
+                                    } // humidity
                                     HStack(spacing:25) {
                                         Image(systemName: "drop")
                                             .foregroundColor(.blue)
@@ -76,7 +80,7 @@ struct ForecastView: View {
                         
                     }.listStyle(PlainListStyle())
                     .onChange(of: unit) { newValue in
-                        Task{
+                        Task{ //when picker is used to change the unit request is made
                             do{
                                 weather = try await weatherManager.getForecastDays(unit: self.unit)
                             }catch{
@@ -89,6 +93,7 @@ struct ForecastView: View {
                     
                     
                 } else{
+                    // display loading icon and view when the api request takes long
                     LoadingView()
                         .task {
                             do{

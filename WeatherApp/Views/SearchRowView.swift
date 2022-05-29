@@ -14,7 +14,7 @@ struct SearchRowView: View {
     var colour:Color
     var value:Double
     var unitSymbol:String
-    
+    // row view to easier customization
     var body: some View {
         HStack {
             Image(systemName: iconName)

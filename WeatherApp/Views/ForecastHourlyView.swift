@@ -13,10 +13,11 @@ struct ForecastHourlyView: View {
     var unit:WeatherUnit = .metric
     @State var hourlyWeather:HourlyForecast?
     
-    
+    // two different api calls used in this view
+    // top part request current weather and bottom uses 3 hour forecast for 5 days
     var body: some View {
         
-        VStack{
+        VStack{ // upper half retreiving current weather details
             if let weatherForecast = weather {
                 VStack(alignment: .center){
                     Text(weatherForecast.current.dt.unixToDate(date: .complete, time: .shortened)!)
@@ -45,7 +46,7 @@ struct ForecastHourlyView: View {
                             }
                         }
                     
-                }
+                }// bottom half retreiving forecast for 5 days for every 3 hour
             if let hourlyCast = hourlyWeather{
                 List(0..<hourlyCast.list.count){ index in
                     let item = hourlyCast.list[index]

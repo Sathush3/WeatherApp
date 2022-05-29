@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
+        // a loading icon is displayed when the process takes time
         ProgressView()
                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
                    .frame(maxWidth: .infinity, maxHeight: .infinity)

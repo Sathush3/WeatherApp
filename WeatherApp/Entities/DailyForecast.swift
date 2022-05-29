@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Model of the response body we get from calling the OpenWeather API for weather forecast for 5 days
 
 struct DailyForecast: Decodable {
     let current: Current

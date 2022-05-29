@@ -129,12 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				795503F82840930200AC5B1F /* CurrentWeatherView.swift */,
+				7935169B2841F7E500C5F710 /* WeatherRowView.swift */,
 				795503FA2840931000AC5B1F /* SearchView.swift */,
+				7935169D2842621400C5F710 /* SearchRowView.swift */,
 				795503FC2840939F00AC5B1F /* ForecastView.swift */,
 				795503FE284093F400AC5B1F /* ForecastHourlyView.swift */,
 				79132B202841258B0084018F /* LoadingView.swift */,
-				7935169B2841F7E500C5F710 /* WeatherRowView.swift */,
-				7935169D2842621400C5F710 /* SearchRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// Model of the response body we get from calling the OpenWeather API for weather forecast for every 3 hour for 5 days
 
 struct HourlyForecast:Decodable{
     let cnt:Int

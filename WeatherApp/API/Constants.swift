@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// api key for the OpenWeatherMap
 enum API {
     static let key: String = "aa3cd33f76dd81309d437fa26151a302"
 }

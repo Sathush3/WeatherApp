@@ -2,11 +2,12 @@
 //  Date+Extensions.swift
 //  OpenWeatherMapApp
 //
-//  Created by Visal Rajapakse on 2022-05-12.
+//  Created by Sathurshan Ramachandran on 2022-05-27.
 //
 
 import Foundation
 
+//Extension to format date
 extension Date {
     func get(_ type: Calendar.Component)-> Int {
         let calendar = Calendar.current

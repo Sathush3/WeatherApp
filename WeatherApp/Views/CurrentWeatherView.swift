@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct CurrentWeatherView: View {
+
     var weatherManager = WeatherManager()
     @State var weather:WeatherBody?
     
     var body: some View {
         VStack{
+            // decoding the data from response into weather struct
             if let weatherforecast = weather{
                 ZStack(alignment: .leading){
+                    // top half
                     VStack{
                         VStack(alignment: .leading, spacing: 5){
                             Text(weatherforecast.name)
@@ -51,7 +54,7 @@ struct CurrentWeatherView: View {
                             
                             Spacer()
                                 .frame(height: 50)
-                            
+                            // fetching images from internet
                             AsyncImage(url: URL(string: "https://cdn.pixabay.com/photo/2020/01/24/21/33/city-4791269_960_720.png")) { image in
                                                    image
                                                        .resizable()
@@ -70,6 +73,7 @@ struct CurrentWeatherView: View {
                     .padding()
                     .frame(maxWidth: .infinity,alignment: .leading)
                     
+                    // bottom half
                     VStack{
                         Spacer()
                         
@@ -102,9 +106,11 @@ struct CurrentWeatherView: View {
                         .preferredColorScheme(.dark)
                 
             }else{
+                // when the api request takes time a loading icon is displayed
                 LoadingView()
                     .task {
                         do{
+                            // api call request
                            weather = try await weatherManager.getCurrentWeather()
                         }catch{
                             print("Error getting weather: \(error )")

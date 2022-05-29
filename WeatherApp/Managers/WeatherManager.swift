@@ -11,6 +11,7 @@ import UIKit
 
 class WeatherManager{
     
+    // alert trigger to show alert when input error is caused
     static let showAlertMsg = Notification.Name("ALERT_MSG")
    
     // colombo latitude and longitude
@@ -20,9 +21,11 @@ class WeatherManager{
     //@Published var weather: WeatherModel?
     private var unit: WeatherUnit = .metric
 
-    //
+    // URL for api
     let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(API.key)"
     let oneCallBaseURL: String = "https://api.openweathermap.org/data/2.5/onecall?exclude=minutely&appid=\(API.key)"
+    
+    // Function for home screen to ger current weather
     
     func getCurrentWeather()async throws -> WeatherBody{
         
@@ -44,6 +47,7 @@ class WeatherManager{
     }
     
     
+    // function to get weather details by city
     
     func getWeatherForCity(city: String , unit:WeatherUnit) async throws -> WeatherBody{
         self.unit = unit
@@ -59,9 +63,10 @@ class WeatherManager{
             
             DispatchQueue.main.asyncAfter(deadline: .now() ) {
                         NotificationCenter.default.post(name: WeatherManager.showAlertMsg, object: nil)
-                print("this worked")
+                // notification trigger to send alert to view screen when input is wrong
+                //print("this worked")
                     }
-            throw tempError()
+            throw InputError(message: "Input Error")
             //fatalError("Error fetching weather Data")
         }
         
@@ -72,7 +77,7 @@ class WeatherManager{
     }
     
     
-    
+    // function to get weather details for 5 days
     
     func getForecastDays(unit:WeatherUnit)async throws -> DailyForecast{
         
@@ -95,6 +100,8 @@ class WeatherManager{
         
     }
     
+    //function to get weather details for 5 days for every 3 hours
+    
     func getForecastHourly(unit:WeatherUnit)async throws -> HourlyForecast{
         
        
@@ -116,8 +123,11 @@ class WeatherManager{
         
     }
     
+    //custom error strcut to throw error for inputs
     
-    struct tempError:Error{
+    struct InputError:Error{
+        var message:String
+        
         
     }
 }

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var city:String = ""
-    @State private var unit:Bool = false
+    @State private var unit:Bool = false // toggle for unit change
     @State var weatherManager = WeatherManager()
     @State var weather:WeatherBody?
-    @State private var showingAlert = false
+    @State private var showingAlert = false // alert trigger for wrong inputs
     var body: some View {
         VStack{
             HStack{
@@ -25,6 +25,7 @@ struct SearchView: View {
                 Button {
                     Task{
                     do{
+                        // api call to get details
                         weather = try await weatherManager.getWeatherForCity(city: self.city, unit: unit ? .imperial : .metric)
                     }catch{
                         print("Error getting weather: \(error )")
@@ -52,6 +53,7 @@ struct SearchView: View {
                             .onReceive(NotificationCenter.default.publisher(for: WeatherManager.showAlertMsg)) { msg in
                                 self.showingAlert = true // simply change the state of the View
                             }
+            // passing into row view for customization
             if let weatherForCity = weather{
                 SearchRowView(iconName: "thermometer", title: "Temperature", colour: .red, value: weatherForCity.main.temp, unitSymbol: unit ? "° F" : "° C")
                 
@@ -73,7 +75,7 @@ struct SearchView: View {
                 Spacer()
             }
             
-        }
+        }//updating the list when toggle ic used to change
         .onChange(of: unit) { newValue in
             Task{
             do{
