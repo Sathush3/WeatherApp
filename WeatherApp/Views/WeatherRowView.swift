@@ -30,6 +30,7 @@ struct WeatherRowView: View {
                             .font(.title)
                     }
                 }
+        
     }
 }
 

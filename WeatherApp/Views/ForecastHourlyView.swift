@@ -82,6 +82,7 @@ struct ForecastHourlyView: View {
                 
             }
                 }
+       // .preferredColorScheme(.light) // MARK: System wide light mode
             }
        
     }

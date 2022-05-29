@@ -85,6 +85,7 @@ struct SearchView: View {
             }
             }
         }
+       // .preferredColorScheme(.light) // MARK: System wide light mode
     }
 }
 

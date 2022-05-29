@@ -103,8 +103,8 @@ struct ForecastView: View {
                             }
                         }
                 }
-                    
-            }
+                
+            } //.preferredColorScheme(.light) // MARK: System wide light mode
             .navigationTitle("Mobile Weather")
             .font(.title2)
            
