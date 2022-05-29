@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 
 class WeatherManager{
+    
+    static let showAlertMsg = Notification.Name("ALERT_MSG")
    
     // colombo latitude and longitude
     private let latituteCMB = 6.9319
@@ -52,7 +55,15 @@ class WeatherManager{
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
         
-        guard (response as? HTTPURLResponse)?.statusCode == 200 else {fatalError("Error fetching weather Data")}
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() ) {
+                        NotificationCenter.default.post(name: WeatherManager.showAlertMsg, object: nil)
+                print("this worked")
+                    }
+            throw tempError()
+            //fatalError("Error fetching weather Data")
+        }
         
         let decodedData = try JSONDecoder().decode(WeatherBody.self, from:data)
 
@@ -106,4 +117,7 @@ class WeatherManager{
     }
     
     
+    struct tempError:Error{
+        
+    }
 }

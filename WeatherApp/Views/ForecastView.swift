@@ -43,9 +43,11 @@ struct ForecastView: View {
                                     .padding(.trailing,5)
                                 VStack (alignment: .leading) {
                                     Text(item.weather.first!.description)
-                                    HStack  {
+                                    HStack()  {
                                         Text("High:")
-                                        Text("\(item.temp.max)"+"\(unit == .metric ? "° C" : "° F")")
+                                        Text("\(item.temp.max.roundDouble())"+"\(unit == .metric ? "° C" : "° F")")
+                                        Spacer()
+                                            .frame(width:10)
                                         Text("Low:")
                                         Text("\(item.temp.min.roundDouble())"+"\(unit == .metric ? "° C" : "° F")")
                                     }

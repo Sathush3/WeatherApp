@@ -12,6 +12,7 @@ struct SearchView: View {
     @State private var unit:Bool = false
     @State var weatherManager = WeatherManager()
     @State var weather:WeatherBody?
+    @State private var showingAlert = false
     var body: some View {
         VStack{
             HStack{
@@ -19,8 +20,9 @@ struct SearchView: View {
                     .padding()
                     .font(.title2)
                     .textFieldStyle(.roundedBorder)
+                    
+                    
                 Button {
-                    print("button check")
                     Task{
                     do{
                         weather = try await weatherManager.getWeatherForCity(city: self.city, unit: unit ? .imperial : .metric)
@@ -43,6 +45,13 @@ struct SearchView: View {
                     .font(.title3)
             }.padding()
             
+                .alert("Non Existent Location \nKindly Re-check the Spelling ", isPresented: $showingAlert) {
+                                Button("OK", role: .cancel) { }
+                            }
+                            // when receiving the msg from "outside"
+                            .onReceive(NotificationCenter.default.publisher(for: WeatherManager.showAlertMsg)) { msg in
+                                self.showingAlert = true // simply change the state of the View
+                            }
             if let weatherForCity = weather{
                 SearchRowView(iconName: "thermometer", title: "Temperature", colour: .red, value: weatherForCity.main.temp, unitSymbol: unit ? "° F" : "° C")
                 

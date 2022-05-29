@@ -74,11 +74,11 @@ struct WeatherBody: Decodable {
     
 }
 
-extension WeatherBody.MainResponse {
-    var feelsLike: Double { return feels_like }
-    var tempMin: Double { return temp_min }
-    var tempMax: Double { return temp_max }
-}
+//extension WeatherBody.MainResponse {
+//    var feelsLike: Double { return feels_like }
+//    var tempMin: Double { return temp_min }
+//    var tempMax: Double { return temp_max }
+//}
 
 struct WeatherResponse: Decodable {
     var id: Int
