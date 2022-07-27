@@ -66,6 +66,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79026D62284DA84000B1FAA9 /* HOmepage */ = {
+			isa = PBXGroup;
+			children = (
+				795503F82840930200AC5B1F /* CurrentWeatherView.swift */,
+				7935169B2841F7E500C5F710 /* WeatherRowView.swift */,
+			);
+			path = HOmepage;
+			sourceTree = "<group>";
+		};
+		79026D63284DA86600B1FAA9 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				795503FA2840931000AC5B1F /* SearchView.swift */,
+				7935169D2842621400C5F710 /* SearchRowView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		79026D64284DA86E00B1FAA9 /* Forecast for days */ = {
+			isa = PBXGroup;
+			children = (
+				795503FC2840939F00AC5B1F /* ForecastView.swift */,
+			);
+			path = "Forecast for days";
+			sourceTree = "<group>";
+		};
+		79026D65284DA88300B1FAA9 /* Forecast for hours */ = {
+			isa = PBXGroup;
+			children = (
+				795503FE284093F400AC5B1F /* ForecastHourlyView.swift */,
+			);
+			path = "Forecast for hours";
+			sourceTree = "<group>";
+		};
 		795503D8284085AC00AC5B1F = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +162,10 @@
 		795503F42840862C00AC5B1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				795503F82840930200AC5B1F /* CurrentWeatherView.swift */,
-				7935169B2841F7E500C5F710 /* WeatherRowView.swift */,
-				795503FA2840931000AC5B1F /* SearchView.swift */,
-				7935169D2842621400C5F710 /* SearchRowView.swift */,
-				795503FC2840939F00AC5B1F /* ForecastView.swift */,
-				795503FE284093F400AC5B1F /* ForecastHourlyView.swift */,
+				79026D65284DA88300B1FAA9 /* Forecast for hours */,
+				79026D64284DA86E00B1FAA9 /* Forecast for days */,
+				79026D63284DA86600B1FAA9 /* Search */,
+				79026D62284DA84000B1FAA9 /* HOmepage */,
 				79132B202841258B0084018F /* LoadingView.swift */,
 			);
 			path = Views;

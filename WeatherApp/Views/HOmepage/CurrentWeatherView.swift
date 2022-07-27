@@ -45,7 +45,7 @@ struct CurrentWeatherView: View {
                                 Spacer()
                                 
                                 
-                                Text(weatherforecast.main.feels_like.roundDouble()+"°")
+                                Text(weatherforecast.main.temp.roundDouble()+"°")
                                     .font(.system(size: 70))
                                     .fontWeight(.bold)
                                     .padding()
@@ -84,7 +84,7 @@ struct CurrentWeatherView: View {
                             HStack{
                                 WeatherRowView(logo: "thermometer", name: "Min temp", value: (weatherforecast.main.temp_min.roundDouble()+"°"))
                                 Spacer()
-                                WeatherRowView(logo: "thermometer", name: "Max temp", value: (weatherforecast.main.temp_max.roundDouble()+"°"))
+                                WeatherRowView(logo: "thermometer", name: "Feels like", value: (weatherforecast.main.feels_like.roundDouble()+"°"))
                             }
                             HStack{
                                 WeatherRowView(logo: "wind", name: "Wind Speed", value: String(weatherforecast.wind.speed.roundDouble())+" m/s")
